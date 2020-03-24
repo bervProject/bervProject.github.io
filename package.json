@@ -1,6 +1,6 @@
 {
   "name": "bervproject.github.io",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.7",
@@ -10,7 +10,7 @@
     "@types/react-dom": "16.9.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.0",
+    "react-scripts": "3.4.1",
     "typeface-roboto": "^0.0.75",
     "typescript": "3.8.3"
   },

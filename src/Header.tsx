@@ -106,14 +106,14 @@ export default function Header() {
           value={value}
           onChange={handleChange}
           indicatorColor="secondary"
-          textColor="white"
+          textColor="inherit"
           centered
         >
           <Tab label="Active Projects" />
           <Tab label="Popular Projects" />
           <Tab label="Best Projects" />
         </Tabs>
-      </AppBar>              
+      </AppBar>
     </div>
   );
 }
