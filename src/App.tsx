@@ -1,10 +1,14 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
 import Header from './Header';
 import Navigation from './Navigation';
+import Home from './Home';
+import Maintainer from './Maintainer';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,57 +29,24 @@ const useStyles = makeStyles((theme: Theme) =>
 const App: React.FC = () => {
   const classes = useStyles();
   return (
-    <div className={classes.app}>
-      <Header></Header>
-      <div className={classes.root}>
-        <Grid container spacing={3}>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>
-              <Typography variant="h5" component="h3">
-                This is a sheet of paper.
-              </Typography>
-              <Typography component="p">
-                Paper can be used to build surface or other elements for your application.
-              </Typography>
-            </Paper>
-          </Grid>
+    <Router>
+      <div className={classes.app}>
+        <Header></Header>
+        <Switch>
+          <Route path="/maintainer">
+            <Maintainer />
+          </Route>
+          <Route path="/about">
 
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>
-              <Typography variant="h5" component="h3">
-                This is a sheet of paper.
-              </Typography>
-              <Typography component="p">
-                Paper can be used to build surface or other elements for your application.
-              </Typography>
-            </Paper>
-          </Grid>
-
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>
-              <Typography variant="h5" component="h3">
-                This is a sheet of paper.
-              </Typography>
-              <Typography component="p">
-                Paper can be used to build surface or other elements for your application.
-              </Typography>
-            </Paper>
-          </Grid>
-
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>
-              <Typography variant="h5" component="h3">
-                This is a sheet of paper.
-              </Typography>
-              <Typography component="p">
-                Paper can be used to build surface or other elements for your application.
-              </Typography>
-            </Paper>
-          </Grid>
-        </Grid>
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+        <Navigation></Navigation>
       </div>
-      <Navigation></Navigation>
-    </div>
+
+    </Router>
   );
 }
 

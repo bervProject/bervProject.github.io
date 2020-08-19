@@ -5,8 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Icon from '@material-ui/core/Icon';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import { createStyles, fade, Theme, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -67,12 +65,6 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function Header() {
   const classes = useStyles();
 
-  const [value, setValue] = React.useState(0);
-
-  function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
-    setValue(newValue);
-  }
-
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -102,17 +94,6 @@ export default function Header() {
             />
           </div>
         </Toolbar>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="secondary"
-          textColor="inherit"
-          centered
-        >
-          <Tab label="Active Projects" />
-          <Tab label="Popular Projects" />
-          <Tab label="Best Projects" />
-        </Tabs>
       </AppBar>
     </div>
   );
