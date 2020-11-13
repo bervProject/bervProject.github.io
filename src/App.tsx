@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './Header';
 import Navigation from './Navigation';
-import Home from './Home';
-import Maintainer from './Maintainer';
+import Routes from './Routes';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -33,19 +33,15 @@ const App: React.FC = () => {
       <div className={classes.app}>
         <Header></Header>
         <Switch>
-          <Route path="/maintainer">
-            <Maintainer />
-          </Route>
-          <Route path="/about">
-
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          {Routes.map((route: any) => (
+            <Route exact path={route.path} key={route.path}>
+              <route.component />
+            </Route>
+          ))}
+          <Redirect from="*" to="/" />
         </Switch>
         <Navigation></Navigation>
       </div>
-
     </Router>
   );
 }

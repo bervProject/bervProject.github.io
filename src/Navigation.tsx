@@ -2,8 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import { Link } from 'react-router-dom';
-import Icon from '@material-ui/core/Icon';
+import { Link, withRouter } from 'react-router-dom';
+import Routes from './Routes';
 
 const useStyles = makeStyles({
   root: {
@@ -11,23 +11,31 @@ const useStyles = makeStyles({
   },
 });
 
-const Navigation: React.FC = () => {
+const Navigation: React.FC = (props: any) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState('recents');
+  const [value, setValue] = React.useState('home');
 
   function handleChange(event: React.ChangeEvent<{}>, newValue: string) {
     setValue(newValue);
   }
 
+  const activeRoute = (defaultValue: string) => {
+    let result = Routes.filter(route => route.path === props.location.pathname).map(route => route.key)[0];
+    result = result || defaultValue;
+    return result;
+  }
 
   return (
-    <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-      <BottomNavigationAction label="Projects"
-        component={Link} to="/" value="recents" icon={<Icon>folder</Icon>} />
-      <BottomNavigationAction component={Link} to="/maintainer" label="Maintainer" value="nearby" icon={<Icon>people</Icon>} />
-      <BottomNavigationAction component={Link} to="/about" label="About Us" value="folder" icon={<Icon>help</Icon>} />
+    <BottomNavigation value={activeRoute(value)} onChange={handleChange} className={classes.root}>
+      {Routes.map((prop, key) => {
+        return (
+          <BottomNavigationAction label={prop.sidebarName}
+            key={key}
+            component={Link} to={prop.path} value={prop.key} icon={prop.icon} />
+        );
+      })}
     </BottomNavigation>
   );
 }
 
-export default Navigation;
+export default withRouter(Navigation);
