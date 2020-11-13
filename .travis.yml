@@ -13,7 +13,7 @@ deploy:
   target_branch: master
   skip_cleanup: true
   committer_from_gh: true
-  token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  token: $GITHUB_TOKEN # Set in the settings page of your repository, as a secure variable
   keep_history: true
   on:
     branch: develop

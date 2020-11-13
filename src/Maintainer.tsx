@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import Gravatar from "react-gravatar";
-import GitHubIcon from '@material-ui/icons/GitHub';
+import GitHubIcon from "@material-ui/icons/GitHub";
 import {
   Avatar,
   CardHeader,
@@ -43,7 +43,9 @@ const Maintainer: React.FC = () => {
             ></CardHeader>
             <CardContent>
               <Typography variant="body1">Social Media</Typography>
-              <a href="https://github.com/berviantoleo"><GitHubIcon/></a>
+              <a href="https://github.com/berviantoleo">
+                <GitHubIcon />
+              </a>
             </CardContent>
           </Card>
         </Grid>

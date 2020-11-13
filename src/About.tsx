@@ -1,8 +1,8 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import Gravatar from "react-gravatar";
-import InstagramIcon from '@material-ui/icons/Instagram';
-import GithubIcon from '@material-ui/icons/GitHub';
+import InstagramIcon from "@material-ui/icons/Instagram";
+import GithubIcon from "@material-ui/icons/GitHub";
 import {
   Avatar,
   CardHeader,
@@ -44,8 +44,12 @@ const About: React.FC = () => {
             ></CardHeader>
             <CardContent>
               <Typography variant="body1">Social Media</Typography>
-              <a href="https://instagram.com/bervproject"><InstagramIcon /></a>
-              <a href="https://github.com/bervProject"><GithubIcon /></a>
+              <a href="https://instagram.com/bervproject">
+                <InstagramIcon />
+              </a>
+              <a href="https://github.com/bervProject">
+                <GithubIcon />
+              </a>
             </CardContent>
           </Card>
         </Grid>

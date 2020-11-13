@@ -1,29 +1,29 @@
-import React from 'react';
-import Header from './Header';
-import Navigation from './Navigation';
-import Routes from './Routes';
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import Header from "./Header";
+import Navigation from "./Navigation";
+import Routes from "./Routes";
+import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
-} from 'react-router-dom';
+  Redirect,
+} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     app: {
-      margin: theme.spacing(0)
+      margin: theme.spacing(0),
     },
     root: {
       padding: theme.spacing(3, 2),
     },
     paper: {
       padding: theme.spacing(2),
-      textAlign: 'center',
+      textAlign: "center",
       color: theme.palette.text.secondary,
     },
-  }),
+  })
 );
 
 const App: React.FC = () => {
@@ -44,6 +44,6 @@ const App: React.FC = () => {
       </div>
     </Router>
   );
-}
+};
 
 export default App;
