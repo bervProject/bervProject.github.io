@@ -3,6 +3,7 @@ import Icon from "@material-ui/core/Icon";
 import Home from "./Home";
 import Maintainer from "./Maintainer";
 import About from "./About";
+import Privacy from "./Privacy";
 
 const Routes = [
   {
@@ -26,6 +27,13 @@ const Routes = [
     sidebarName: "About Us",
     component: About,
   },
+  {
+    path: "/privacy",
+    key: "privacy",
+    icon: <Icon>help</Icon>,
+    sidebarName: "Privacy Policy",
+    component: Privacy,
+  }
 ];
 
 export default Routes;
