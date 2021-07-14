@@ -33,7 +33,7 @@ const Routes = [
     icon: <Icon>help</Icon>,
     sidebarName: "Privacy Policy",
     component: Privacy,
-  }
+  },
 ];
 
 export default Routes;
