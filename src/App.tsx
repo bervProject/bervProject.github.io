@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 import Routes from "./Routes";
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect,
