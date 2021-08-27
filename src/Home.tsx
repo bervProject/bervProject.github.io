@@ -52,7 +52,7 @@ const Home: React.FC = () => {
     <div className={classes.root}>
       <Grid container spacing={3}>
         {projects.map((project) => (
-          <Grid item xs={6}>
+          <Grid key={project.id} item xs={6}>
             <Paper className={classes.paper}>
               <Typography variant="h5" component="h3">
                 <a href={project.html_url}>{project.name}</a>

@@ -11,6 +11,9 @@ import {
   Theme,
   makeStyles,
 } from "@material-ui/core/styles";
+import { useIsAuthenticated } from "@azure/msal-react";
+import { SignInButton } from "./SingInButton";
+import { SignOutButton } from "./SignOutButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
         backgroundColor: alpha(theme.palette.common.white, 0.25),
       },
       marginLeft: 0,
+      marginRight: 10,
       width: "100%",
       [theme.breakpoints.up("sm")]: {
         marginLeft: theme.spacing(1),
@@ -69,7 +73,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Header() {
   const classes = useStyles();
-
+  const isAuthenticated = useIsAuthenticated();
+  console.log(isAuthenticated);
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -98,6 +103,7 @@ export default function Header() {
               inputProps={{ "aria-label": "Search" }}
             />
           </div>
+          {isAuthenticated ? <SignOutButton />  : <SignInButton />}
         </Toolbar>
       </AppBar>
     </div>

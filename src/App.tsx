@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./Header";
+import Header from "./components/Header";
 import Navigation from "./Navigation";
 import Routes from "./Routes";
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
