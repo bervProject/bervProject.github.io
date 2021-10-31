@@ -1,16 +1,19 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
+import Card from "@mui/material/Card";
 import Gravatar from "react-gravatar";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import GithubIcon from "@material-ui/icons/GitHub";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import GithubIcon from "@mui/icons-material/GitHub";
 import {
   Avatar,
   CardHeader,
   CardContent,
   Typography,
   Grid,
-} from "@material-ui/core";
-import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
+} from "@mui/material";
+import { Theme } from "@mui/material/styles";
+
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

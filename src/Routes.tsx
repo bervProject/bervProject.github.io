@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "@material-ui/core/Icon";
+import Icon from "@mui/material/Icon";
 import Home from "./Home";
 import Maintainer from "./Maintainer";
 import About from "./About";

@@ -1,8 +1,10 @@
 import React from "react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from '@mui/material/CssBaseline';
 import Header from "./components/Header";
 import Navigation from "./Navigation";
 import Routes from "./Routes";
-import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
+import { ColorModeContext } from "./color-mode-context";
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,38 +12,45 @@ import {
   Redirect,
 } from "react-router-dom";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    app: {
-      margin: theme.spacing(0),
-    },
-    root: {
-      padding: theme.spacing(3, 2),
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-    },
-  })
-);
-
 const App: React.FC = () => {
-  const classes = useStyles();
+  const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    [],
+  );
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode],
+  );
   return (
     <Router>
-      <div className={classes.app}>
-        <Header></Header>
-        <Switch>
-          {Routes.map((route: any) => (
-            <Route exact path={route.path} key={route.path}>
-              <route.component />
-            </Route>
-          ))}
-          <Redirect from="*" to="/" />
-        </Switch>
-        <Navigation></Navigation>
-      </div>
+      <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div>
+          <Header></Header>
+          <Switch>
+            {Routes.map((route: any) => (
+              <Route exact path={route.path} key={route.path}>
+                <route.component />
+              </Route>
+            ))}
+            <Redirect from="*" to="/" />
+          </Switch>
+          <Navigation></Navigation>
+        </div>
+      </ThemeProvider>
+      </ColorModeContext.Provider>
     </Router>
   );
 };

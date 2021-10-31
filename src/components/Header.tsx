@@ -1,19 +1,22 @@
-import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Icon from "@material-ui/core/Icon";
-import {
-  createStyles,
-  alpha,
-  Theme,
-  makeStyles,
-} from "@material-ui/core/styles";
+import { useContext, useState } from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from '@mui/material/Box';
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Icon from "@mui/material/Icon";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { useTheme, Theme } from "@mui/material/styles";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import MoreIcon from '@mui/icons-material/MoreVert';
 import { useIsAuthenticated } from "@azure/msal-react";
 import { SignInButton } from "./SingInButton";
 import { SignOutButton } from "./SignOutButton";
+import { ColorModeContext } from "../color-mode-context";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,58 +28,59 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
-      display: "none",
-      [theme.breakpoints.up("sm")]: {
-        display: "block",
-      },
-    },
-    search: {
-      position: "relative",
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: alpha(theme.palette.common.white, 0.15),
-      "&:hover": {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-      },
-      marginLeft: 0,
-      marginRight: 10,
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
-        marginLeft: theme.spacing(1),
-        width: "auto",
-      },
-    },
-    searchIcon: {
-      width: theme.spacing(7),
-      height: "100%",
-      position: "absolute",
-      pointerEvents: "none",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    inputRoot: {
-      color: "inherit",
-    },
-    inputInput: {
-      padding: theme.spacing(1, 1, 1, 7),
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
-        width: 120,
-        "&:focus": {
-          width: 200,
-        },
-      },
     },
   })
 );
 
 export default function Header() {
+  const theme = useTheme();
   const classes = useStyles();
   const isAuthenticated = useIsAuthenticated();
-  console.log(isAuthenticated);
+  const colorMode = useContext(ColorModeContext);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
+    useState<null | HTMLElement>(null);
+
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+
+  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const renderMobileMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+      <MenuItem onClick={colorMode.toggleColorMode}>
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+        </IconButton>
+        <p>Change Theme</p>
+      </MenuItem>
+      <MenuItem>
+        {isAuthenticated ? <SignOutButton /> : <SignInButton />}
+      </MenuItem>
+    </Menu>
+  );
+
   return (
-    <div className={classes.root}>
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -84,28 +88,35 @@ export default function Header() {
             className={classes.menuButton}
             color="inherit"
             aria-label="Open drawer"
-          >
+            size="large">
             <Icon>menu</Icon>
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             Berv Project
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <Icon>search</Icon>
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "Search" }}
-            />
-          </div>
-          {isAuthenticated ? <SignOutButton />  : <SignInButton />}
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
+          </Box>
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            {isAuthenticated ? <SignOutButton /> : <SignInButton />}
+          </Box>
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="show more"
+              aria-controls={mobileMenuId}
+              aria-haspopup="true"
+              onClick={handleMobileMenuOpen}
+              color="inherit"
+            >
+              <MoreIcon />
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
-    </div>
+      {renderMobileMenu}
+    </Box>
   );
 }

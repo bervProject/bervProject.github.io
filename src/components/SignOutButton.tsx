@@ -1,6 +1,6 @@
 import React from "react";
 import { useMsal } from "@azure/msal-react";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import { IPublicClientApplication } from "@azure/msal-browser";
 
 function handleLogout(instance: IPublicClientApplication) {

@@ -1,15 +1,18 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
+import Card from "@mui/material/Card";
 import Gravatar from "react-gravatar";
-import GitHubIcon from "@material-ui/icons/GitHub";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import {
   Avatar,
   CardHeader,
   CardContent,
   Typography,
   Grid,
-} from "@material-ui/core";
-import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
+} from "@mui/material";
+import { Theme } from "@mui/material/styles";
+
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

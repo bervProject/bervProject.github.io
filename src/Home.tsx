@@ -1,25 +1,45 @@
 import React, { useState, useEffect } from "react";
-import Grid from "@material-ui/core/Grid";
-import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
+import { Theme } from "@mui/material/styles";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import Button from '@mui/material/Button';
+import GitHubIcon from "@mui/icons-material/GitHub";
 import axios from "axios";
-import { Container } from "@material-ui/core";
+import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       padding: theme.spacing(3, 2),
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
+      height: 600,
+      width: '100%',
     },
   })
 );
+
+const columns: GridColDef[] = [
+  { field: 'id', headerName: 'ID', width: 100 },
+  {
+    field: 'name',
+    headerName: 'Name',
+    width: 250,
+  },
+  {
+    field: 'description',
+    headerName: 'Description',
+    width: 500,
+  },
+  {
+    field: 'html_url',
+    headerName: 'Link',
+    sortable: false,
+    renderCell: (params: GridRenderCellParams) => (<Button startIcon={<GitHubIcon />} href={params.value} variant="contained">Repo</Button>)
+  }
+];
+
+
 const Home: React.FC = () => {
-  const [projects, setProjects] = useState<Array<any> | null>(null);
+  const [projects, setProjects] = useState<Array<any>>([]);
   const classes = useStyles();
   useEffect(() => {
     axios
@@ -32,36 +52,16 @@ const Home: React.FC = () => {
       });
   }, []);
 
-  if (projects === null) {
-    return (
-      <Container>
-        <Typography
-          variant="h1"
-          component="h2"
-          align="center"
-          gutterBottom
-          paragraph
-        >
-          Empty Project
-        </Typography>
-      </Container>
-    );
-  }
-
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        {projects.map((project) => (
-          <Grid key={project.id} item xs={6}>
-            <Paper className={classes.paper}>
-              <Typography variant="h5" component="h3">
-                <a href={project.html_url}>{project.name}</a>
-              </Typography>
-              <Typography component="p">{project.description}</Typography>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
+      <DataGrid
+        rows={projects}
+        loading={projects.length === 0}
+        columns={columns}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
+        disableSelectionOnClick
+      />
     </div>
   );
 };
