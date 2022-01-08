@@ -7,9 +7,9 @@ import Routes from "./Routes";
 import { ColorModeContext } from "./color-mode-context";
 import {
   BrowserRouter as Router,
-  Switch,
+  Navigate,
   Route,
-  Redirect,
+  Routes as ReactRouters,
 } from "react-router-dom";
 
 const App: React.FC = () => {
@@ -39,14 +39,12 @@ const App: React.FC = () => {
         <CssBaseline />
         <div>
           <Header></Header>
-          <Switch>
-            {Routes.map((route: any) => (
-              <Route exact path={route.path} key={route.path}>
-                <route.component />
-              </Route>
+          <ReactRouters>
+            {Routes.map((route) => (
+              <Route path={route.path} key={route.path} element={React.createElement(route.component)} />
             ))}
-            <Redirect from="*" to="/" />
-          </Switch>
+            <Route path="*" element={() => <Navigate to="/" />} />
+          </ReactRouters>
           <Navigation></Navigation>
         </div>
       </ThemeProvider>
