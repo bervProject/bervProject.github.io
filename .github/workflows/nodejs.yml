@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x, 17.x]
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
@@ -26,7 +26,7 @@ jobs:
         env:
           CI: true
       - name: Deploy 🚀
-        if: ${{ github.event_name == 'push' && matrix.node-version == '14.x'}}
+        if: ${{ github.event_name == 'push' && matrix.node-version == '16.x'}}
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           BRANCH: gh-pages # The branch the action should deploy to.
