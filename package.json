@@ -10,7 +10,7 @@
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.3",
     "@mui/styles": "^5.5.3",
-    "@mui/x-data-grid": "^5.7.0",
+    "@mui/x-data-grid": "^5.10.0",
     "axios": "^0.26.1",
     "lint-staged": "^12.3.7",
     "prettier": "^2.6.1",
