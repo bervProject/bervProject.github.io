@@ -43,7 +43,7 @@ const App: React.FC = () => {
             {Routes.map((route) => (
               <Route path={route.path} key={route.path} element={React.createElement(route.component)} />
             ))}
-            <Route path="*" element={() => <Navigate to="/" />} />
+            <Route path="*" element={React.createElement(() => <Navigate to="/" />)} />
           </ReactRouters>
           <Navigation></Navigation>
         </div>
