@@ -7,7 +7,7 @@
     "@azure/msal-react": "^1.4.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.8.2",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.2",
     "@mui/styles": "^5.8.6",
     "@mui/x-data-grid": "^5.12.3",
