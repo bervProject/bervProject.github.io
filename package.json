@@ -9,7 +9,7 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.8.2",
-    "@mui/styles": "^5.8.0",
+    "@mui/styles": "^5.8.6",
     "@mui/x-data-grid": "^5.12.3",
     "axios": "^0.27.2",
     "lint-staged": "^12.5.0",
