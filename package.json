@@ -6,7 +6,7 @@
     "@azure/msal-browser": "^2.26.0",
     "@azure/msal-react": "^1.4.0",
     "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.8.1",
+    "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.2",
     "@mui/styles": "^5.8.6",
