@@ -31,10 +31,10 @@
   resolved "https://registry.yarnpkg.com/@azure/msal-common/-/msal-common-7.2.0.tgz#e186450866cb95f18bc558e0fe1673ab44b42d4f"
   integrity sha512-+Oz8LKTOACDHqDmv+MZy/z+DZRH8RZbMjhadmvp0scQ0R75OrzZro+HkxifWhtDG8l1ViYkvV9NHb4pEZyajAQ==
 
-"@azure/msal-react@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/@azure/msal-react/-/msal-react-1.4.0.tgz#0f025832cf2c088fde15f66e9a92176708a670d6"
-  integrity sha512-8H6pjks3tHQmMuqa8pLM2YcEYzg9cQCV1K+ba+fJnQDtu4ksZPXLj9kXf7ioM6vX4KJSU+fJFfhlbECu4F6jCg==
+"@azure/msal-react@^1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@azure/msal-react/-/msal-react-1.4.4.tgz#8346560bef70f7a008a90d7b7c0307f2e5e1f0fc"
+  integrity sha512-OyykNbLth9PBSc3mxdvd9WG/rvvVGtmStMkS+Ba4hrx708n49/Byx/LnYz0KA5KzJ5dCv3u8BWn1uzppy/y2vw==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.0", "@babel/code-frame@^7.16.7", "@babel/code-frame@^7.8.3":
   version "7.16.7"
