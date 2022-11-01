@@ -49,7 +49,7 @@
     "@types/jest": "29.1.1",
     "@types/node": "^18.7.23",
     "@types/react": "18.0.24",
-    "@types/react-dom": "18.0.6",
+    "@types/react-dom": "18.0.8",
     "@types/react-gravatar": "^2.6.10",
     "@types/react-router-dom": "^5.3.3",
     "husky": "^8.0.1",
