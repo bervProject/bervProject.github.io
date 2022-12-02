@@ -11,7 +11,7 @@
     "@mui/material": "^5.10.16",
     "@mui/styles": "^5.10.16",
     "@mui/x-data-grid": "^5.17.14",
-    "axios": "^0.27.2",
+    "axios": "^1.2.0",
     "lint-staged": "^13.0.4",
     "prettier": "^2.8.0",
     "react": "^18.2.0",
