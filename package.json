@@ -52,7 +52,7 @@
     "@types/react-dom": "18.0.8",
     "@types/react-gravatar": "^2.6.10",
     "@types/react-router-dom": "^5.3.3",
-    "husky": "^8.0.1",
+    "husky": "^8.0.2",
     "typescript": "4.8.4"
   },
   "husky": {
