@@ -1,19 +1,19 @@
-version: 2
+version: 2.1
+orbs:
+  node: circleci/node@5.0.3
 jobs:
   build:
     docker:
-      - image: circleci/node:18
-    parallelism: 1
+      - image: cimg/base:stable
     steps:
       - checkout
-      - restore_cache:
-          key: v1-yarn-{{ checksum "yarn.lock" }}
-      - run: yarn install
-      - save_cache:
-          key: v1-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ./node_modules
+      - node/install:
+          install-yarn: true
+          node-version: '18.12'
+      - node/install-packages:
+          pkg-manager: yarn
       - run: yarn build
-      - persist_to_workspace:
-          root: .
-          paths: build
+workflows:
+  test_my_app:
+    jobs:
+      - build
