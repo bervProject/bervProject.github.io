@@ -70,6 +70,7 @@ const config = {
             label: 'Tutorial',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/privacy', label: 'Privacy Policy', position: 'right'},
           {
             href: 'https://github.com/bervProject/bervProject.github.io',
             label: 'GitHub',
