@@ -12,7 +12,6 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -56,6 +55,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [],
+      headTags: [
+        {
+          tagName: 'link',
+          attributes: { rel: 'icon', href: '/img/favicon.ico' },
+        },
+      ],
       navbar: {
         title: 'Berv Project',
         logo: {
